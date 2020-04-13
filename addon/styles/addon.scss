@@ -1,0 +1,18 @@
+
+.ember-context-menu-dropdown {
+  position: absolute;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  min-width: auto;
+  .ember-context-menu-item {
+    display: block;
+    padding: .25rem 1.5rem;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+}
