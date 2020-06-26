@@ -1,0 +1,17 @@
+
+.em-context-menu-dropdown {
+  position: fixed;
+  padding: 10px 0;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  min-width: auto;
+  .navigation-item {
+    display: block;
+    padding: 5px 15px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+}

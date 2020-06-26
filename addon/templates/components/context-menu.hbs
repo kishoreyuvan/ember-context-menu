@@ -1,0 +1,10 @@
+{{yield}}
+{{#if showContextMenu}}
+  {{#if this.menuActions.length}}
+    <EmberKeyNavigation @tagName="ul" @navigationItem={{this.menuNavItem}} @class="em-context-menu-dropdown {{this.contextMenuClass}}" @model={{this.menuActions}} as |navigationWrapper|>
+      {{#each this.menuActions as |menuAction|}}
+        <navigationWrapper.item @tagName="li" @class={{this.menuItemClass}} @activeItemClass={{this.activeItemClass}} @model={{menuAction}} @onSelect={{action performAction}} />
+      {{/each}}
+    </EmberKeyNavigation>
+  {{/if}}
+{{/if}}

@@ -1,0 +1,1 @@
+export { default } from 'em-context-menu/components/context-menu-nav-item';
