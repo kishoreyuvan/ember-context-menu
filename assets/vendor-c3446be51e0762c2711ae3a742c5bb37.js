@@ -7291,11 +7291,11 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=t.default.extend({layout:r.default})
 e.default=n}),define("ember-context-menu/components/context-menu",["exports","ember-context-menu/templates/components/context-menu"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var r=27,n=Ember.Component.extend({layout:t.default,menuNavItem:"context-menu-nav-item",activeItemClass:"active",didInsertElement:function(){this._super.apply(this,arguments),this._hideContextMenu=Ember.run.bind(this,"hideContextMenu"),this._hideMenuOnEsc=Ember.run.bind(this,"hideMenuOnEsc")},contextMenu:function(e){var t=e.clientX,r=e.clientY
-return this.set("showContextMenu",!0),Ember.run.schedule("afterRender",this,function(){this.setPosition(t,r)}),!1},setPosition:function(e,t){var r=document.querySelector(".ember-context-menu-dropdown"),n=r.offsetHeight,i=r.offsetWidth,o=document.documentElement.clientHeight,a=document.documentElement.clientWidth
+var r=27,n=Ember.Component.extend({layout:t.default,menuNavItem:"context-menu-nav-item",activeItemClass:"active",excludeMenuForHrefs:!0,didInsertElement:function(){this._super.apply(this,arguments),this._hideContextMenu=Ember.run.bind(this,"hideContextMenu"),this._hideMenuOnEsc=Ember.run.bind(this,"hideMenuOnEsc")},contextMenu:function(e){var t=e.clientX,r=e.clientY,n=e.target
+return this.excludeMenuForHrefs&&n.href?(this.hideContextMenu(),!0):(this.set("showContextMenu",!0),Ember.run.schedule("afterRender",this,function(){this.setPosition(t,r)}),!1)},setPosition:function(e,t){var r=document.querySelector(".ember-context-menu-dropdown"),n=r.offsetHeight,i=r.offsetWidth,o=document.documentElement.clientHeight,a=document.documentElement.clientWidth
 e+i>a&&(e-=30+(e+i)-a),t+n>o&&(t-=30+(t+n)-o),Object.assign(r.style,{left:"".concat(e,"px"),top:"".concat(t,"px")}),this.set("menuElement",r),document.body.appendChild(r),r.focus(),this.activateListeners()},activateListeners:function(){var e=this.menuElement
 e.addEventListener("focusout",this._hideContextMenu),e.addEventListener("keydown",this._hideMenuOnEsc)},hideMenuOnEsc:function(e){if(e.keyCode===r)return this.hideContextMenu(),!1},hideContextMenu:function(){var e=this.menuElement
-this.deactivateListerners(),document.body.removeChild(e),this.set("showContextMenu",!1)},deactivateListerners:function(){var e=this.menuElement
+e&&(this.deactivateListerners(),document.body.removeChild(e),this.set("showContextMenu",!1))},deactivateListerners:function(){var e=this.menuElement
 e.removeEventListener("focusout",this._hideContextMenu),e.removeEventListener("keydown",this._hideMenuOnEsc)},performAction:function(e){var t=e.action
 "function"===Ember.typeOf(t)?t(this.model):this[t](this.model),this.hideContextMenu()}})
 e.default=n}),define("ember-context-menu/templates/components/context-menu-nav-item",["exports"],function(e){"use strict"
